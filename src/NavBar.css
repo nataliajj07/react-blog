@@ -1,0 +1,30 @@
+nav{
+    display: flex;
+    align-items: center;
+}
+.links{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.links a{
+    margin-left: 30px;
+    outline: none;
+    text-decoration: none;
+    padding-top: 3px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+  .links a:link {
+    color: #000000;
+    font-family: 'Lato', sans-serif;
+  }
+  
+  .links a:visited {
+    color: #000000;
+  }
+  
+  .links a:hover {
+    color: #15b43a;
+  }

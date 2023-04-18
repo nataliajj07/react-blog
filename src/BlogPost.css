@@ -1,0 +1,23 @@
+
+h2{
+    color: rgb(4, 76, 29);
+    font-family: 'Lato', sans-serif;
+}
+
+p{
+    color: rgb(2, 2, 2);
+    font-family: 'Lato', sans-serif;
+}
+
+.blog-post{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    margin-left: 600px;
+}
+
+p strong{
+    color: rgb(8, 122, 19);
+}
