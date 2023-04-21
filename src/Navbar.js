@@ -5,11 +5,11 @@ import './NavBar.css'
 function Navbar() {
   return (
     <nav>
-      <h1>Blog de Películas</h1>
+      <h1>Movie Blog</h1>
       <div className='links'>
-        <Link to="/">Inicio</Link>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target='_blank'>Favoritos</a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target='_blank'>Más peliculas</a>
+        <Link to="/">Home</Link>
+        <Link to= "/favoriteview">Favorites</Link>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target='_blank'>More Movies</a>
       </div>
     </nav>
   );

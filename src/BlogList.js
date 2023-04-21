@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Fb from './Firebase.js';
-import { getFirestore, collection, addDoc } from "firebase/firestore";
 import './BlogList.css'
 import { FaRegStar } from "react-icons/fa";
+import { addToFirebase } from './helpers/firebaseHelpers';
 
 function BlogList() {
   const [movies, setMovies] = useState([]);
@@ -26,20 +25,10 @@ function BlogList() {
     });
   }, []);
 
-  const addToFavorites = async (movieId) => {
-    const db = getFirestore(Fb);
-
-    try {
-      const docRef = await addDoc(collection(db, "favorites"), {
-        movieId: movieId,
-        createdAt: new Date()
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
+  const addToFavorites = async (movieId, title) => {
+    addToFirebase("favorites",{movieId,title});
   };
-
+  
   return (
     <div className='bloglist'>
       <h1>Top 100 Movies of All Time</h1>
@@ -50,7 +39,7 @@ function BlogList() {
             <img src={movie.thumbnail} alt={movie.title} />
             <div className='titulo'>
               <Link to={`/blogpost/${movie.id}`}>{movie.title}</Link>
-              <FaRegStar className='fav' onClick={() => addToFavorites(movie.id)}/>
+              <FaRegStar className='fav' onClick={() => addToFavorites(movie.id, movie.title)}/>
             </div>
           </li>
         </div>
