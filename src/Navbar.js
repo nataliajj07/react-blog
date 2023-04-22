@@ -9,7 +9,7 @@ function Navbar() {
       <div className='links'>
         <Link to="/">Home</Link>
         <Link to= "/favoriteview">Favorites</Link>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target='_blank'>More Movies</a>
+        <a href="https://www.cuevana.be" target='_blank'>More Movies</a>
       </div>
     </nav>
   );

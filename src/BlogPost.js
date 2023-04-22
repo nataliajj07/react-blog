@@ -13,7 +13,7 @@ function BlogPost() {
       url: `https://imdb-top-100-movies.p.rapidapi.com/`+id,
       params: {id: id},
       headers: {
-        'X-RapidAPI-Key': '9519c6a328msheec59aafa1e8b80p1306bbjsn720957386266',
+        'X-RapidAPI-Key': 'b14a393d22msh26cdbd1dadf7007p1ec4a7jsnc088cbaacef3',
         'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
       }
     };

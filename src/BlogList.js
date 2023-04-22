@@ -13,7 +13,7 @@ function BlogList() {
       method: 'GET',
       url: 'https://imdb-top-100-movies.p.rapidapi.com/',
       headers: {
-        'X-RapidAPI-Key': '9519c6a328msheec59aafa1e8b80p1306bbjsn720957386266',
+        'X-RapidAPI-Key': 'b14a393d22msh26cdbd1dadf7007p1ec4a7jsnc088cbaacef3',
         'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
       }
     };
@@ -25,8 +25,8 @@ function BlogList() {
     });
   }, []);
 
-  const addToFavorites = async (movieId, title) => {
-    addToFirebase("favorites",{movieId,title});
+  const addToFavorites = async (movieId, title, movieThumbnail) => {
+    addToFirebase("favorites",{movieId,title, movieThumbnail});
   };
   
   return (
@@ -39,7 +39,7 @@ function BlogList() {
             <img src={movie.thumbnail} alt={movie.title} />
             <div className='titulo'>
               <Link to={`/blogpost/${movie.id}`}>{movie.title}</Link>
-              <FaRegStar className='fav' onClick={() => addToFavorites(movie.id, movie.title)}/>
+              <FaRegStar className='fav' onClick={() => addToFavorites(movie.id, movie.title, movie.thumbnail)}/>
             </div>
           </li>
         </div>

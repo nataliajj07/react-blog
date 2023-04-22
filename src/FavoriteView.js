@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getFromFirebase, deleteFromFirebase } from './helpers/firebaseHelpers';
+import './FavoriteView.css'
+import { FaTrashAlt } from "react-icons/fa";
 
 function FavoriteView() {
     const [movies, setMovies] = useState([]);
@@ -8,7 +10,6 @@ function FavoriteView() {
         const fetchData = async () => {
             const result = await getFromFirebase('favorites');
             setMovies(result);
-            
         };
         fetchData();
     }, []);
@@ -23,13 +24,15 @@ function FavoriteView() {
             <h1>My Favorite Movies</h1>
             <ul>
                 {movies.map(movie => (
+                    <div className='container'>
                     <li key={movie.id}>
+                        <img src={movie.data.movieThumbnail} />
                         <div className='titulo'>
                             <p>{movie.data.title}</p>
-                            <button>Update</button>
-                            <button onClick={() => deleteFrom(movie.id)}>Delete</button>
+                            <FaTrashAlt className='button-del' onClick={() => deleteFrom(movie.id)} />
                         </div>
                     </li>
+                    </div>
                 ))}
             </ul>
         </div>
