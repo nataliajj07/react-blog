@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './BlogPost.css'
+import { ListContext } from './ListContext';
 
 function BlogPost() {
+
+  const topFive = useContext(ListContext).list;
+
   const { id } = useParams();
   const [movie, setMovie] = useState({});
 
@@ -27,14 +31,30 @@ function BlogPost() {
 
   return (
     <div className="blog-post">
-      <h2>{movie.title}</h2>
-      <img src={movie.thumbnail} alt={movie.title} />
-      <p><strong>Descripción: </strong>{movie.description}</p>
-      <p><strong>Director: </strong> {movie.director}</p>
-      <p><strong>Genre: </strong> {movie.genre}</p>
-      <p><strong>Writers: </strong> {movie.writers}</p>
-      <p><strong>Year: </strong> {movie.year}</p>
-      <p><strong>Rating: </strong> {movie.rating}</p>
+      <div className='left'>
+        
+      </div>
+      <div className='center'>
+        <h2>{movie.title}</h2>
+        <img src={movie.thumbnail} alt={movie.title} />
+        <p><strong>Descripción: </strong>{movie.description}</p>
+        <p><strong>Director: </strong> {movie.director}</p>
+        <p><strong>Genre: </strong> {movie.genre}</p>
+        <p><strong>Writers: </strong> {movie.writers}</p>
+        <p><strong>Year: </strong> {movie.year}</p>
+        <p><strong>Rating: </strong> {movie.rating}</p>
+      </div>
+      <div className='right'>
+        <ul className='topfive-ul'>
+
+          {topFive.map(item=>(
+            <li key={item.id}>
+              {item.data.title}  
+            </li>
+          ))}
+        </ul>
+      </div>
+      
     </div>
   );
 }

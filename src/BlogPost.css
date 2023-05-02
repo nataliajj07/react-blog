@@ -9,13 +9,39 @@ p{
     font-family: 'Lato', sans-serif;
 }
 
+.topfive-ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+
 .blog-post{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+
+.center{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 300px;
-    margin-left: 600px;
+    width: calc(100%/3);
+    max-width: 500px;
+}
+
+.left{
+    width: calc(100%/3);
+}
+
+.right{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: calc(100%/3);
+    
 }
 
 p strong{

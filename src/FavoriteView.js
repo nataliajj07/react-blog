@@ -4,6 +4,7 @@ import './FavoriteView.css'
 import { FaTrashAlt } from "react-icons/fa";
 
 function FavoriteView() {
+
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {

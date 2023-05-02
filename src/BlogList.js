@@ -4,6 +4,7 @@ import axios from 'axios';
 import './BlogList.css'
 import { FaRegStar } from "react-icons/fa";
 import { addToFirebase } from './helpers/firebaseHelpers';
+import { serverTimestamp } from 'firebase/firestore';
 
 function BlogList() {
   const [movies, setMovies] = useState([]);
@@ -26,7 +27,7 @@ function BlogList() {
   }, []);
 
   const addToFavorites = async (movieId, title, movieThumbnail) => {
-    addToFirebase("favorites",{movieId,title, movieThumbnail});
+    addToFirebase("favorites",{movieId,title, movieThumbnail, createdAt:serverTimestamp()});
   };
   
   return (

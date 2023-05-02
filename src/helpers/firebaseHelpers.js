@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, updateDoc, doc, deleteDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, updateDoc, doc, deleteDoc, query, orderBy, limit } from "firebase/firestore";
 import {db} from '../Firebase';
 
 const addToFirebase = async (collectionName,  objectToSave ) => {
@@ -14,10 +14,18 @@ const addToFirebase = async (collectionName,  objectToSave ) => {
 };
 
 //TODO: Implement this function
-const getFromFirebase = async (collectionName) => {
+const getFromFirebase = async (collectionName, resultLimit = null) => {
   try {
-    const collRef = collection(db, collectionName);
-    const querySnapshot = await getDocs(collRef);
+    let collRef = collection(db, collectionName);
+    let finalQuery = collRef;
+
+    finalQuery = query(collRef, orderBy('createdAt', 'desc'));
+
+    if (resultLimit) {
+      finalQuery = query(finalQuery, limit(resultLimit));
+    }
+
+    const querySnapshot = await getDocs(finalQuery);
     const results = [];
     querySnapshot.forEach((doc) => {
       results.push({ id: doc.id, data: doc.data() });
@@ -28,6 +36,8 @@ const getFromFirebase = async (collectionName) => {
     return [];
   }
 };
+
+
 const updateFromFirebase = async (collectionName, docId, updateData) => {
   try {
     const docRef = doc(db, collectionName, docId);
